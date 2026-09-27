@@ -1,0 +1,127 @@
+body{
+    background-color: rgb(32, 32, 32);
+    color: rgb(199, 199, 199);
+    font-family: Segoe UI, sans-serif;
+    margin: 0;
+}
+
+header{
+    background-color: rgb(53, 53, 53);
+    padding: 20px;
+    margin: 10px;
+}
+
+main{
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(53, 53, 53);
+}
+
+section {
+    background-color: rgb(43, 43, 43);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+footer{
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(53, 53, 53);
+}
+
+h1{
+    margin-top: 0;
+}
+
+h2{
+    margin-top: 0;
+}
+
+button{
+    background-color: rgb(104, 132, 156);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:hover{
+    background-color: rgb(100, 154, 202);
+}
+
+#wallet-address {
+    background-color: rgb(32, 32, 32);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+#status {
+    background-color: rgb(32, 32, 32);
+    padding: 10px;
+    border-radius: 6px;
+}
+
+form{
+    padding: 10px;
+}
+
+input, select{
+    background-color: rgb(43, 43, 43);
+    color: rgb(199, 199, 199);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 0 0 5px rgb(107, 107, 107);
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: inherit;
+}
+
+input:focus, select:focus{
+    outline: none;
+    box-shadow: 0 0 6px rgb(100, 154, 202);
+    background-color: rgb(39, 39, 39);
+}
+
+input::placeholder{
+    color: rgb(130, 131, 131);
+}
+
+/* Responsive Design */
+@media (max-width: 700px){
+    header {
+        padding: 22px 18px;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+    
+    main {
+        padding: 20px 12px;
+    }
+    
+    section { 
+        padding: 18px; 
+        margin-bottom: 16px; 
+    }
+    
+    section h2 { 
+        font-size: 19px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 11px 16px;
+    }
+    
+    input, select {
+        font-size: 16px;
+    }
+}
+

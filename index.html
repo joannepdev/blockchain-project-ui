@@ -3,34 +3,155 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blockchain Application</title>
+        <title>Training Certificate DApp</title>
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <header> 
-            <h1> Blockchain Application </h1>
-            <p>Interact with the blockchain through a simple web interface.</p>
+        <header>
+            <h1>Training Certificate DApp</h1>
+            <p>Blockchain-based training certificate management and verification.</p>
         </header>
         <main>
+
+            <!-- Wallet Section -->
             <section id="wallet-section">
                 <h2>Wallet</h2>
                 <button id="connect-wallet"> Connect Wallet </button>
-                <p id="wallet-address"> Wallet not connected. </p>
+                <p id="wallet-address"> Wallet not connected </p>
+                <p id="wallet-role"> Role: Not connected </p>
             </section>
-            <section id="application-section">
-                <h2>Application</h2>
-                <!-- Contract-related UI will be added here later -->
-                 <p> Smart contract functionality will be available once the contract is integrated. </p>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard-section">
+                <h2>Dashboard</h2>
+                <p id="dashboard-message"> Connect your wallet to access the application. </p>
             </section>
-            <section id="status-section">
-                <h2>Status</h2>
-                <p id="status"> No transaction yet. </p>
+
+            <!-- Admin Section -->
+            <section id="admin-section">
+                <h2>Admin</h2>
+                <h3>Register User</h3>
+                <form id="register-user-form">
+                    <label for="user-address"> User Address </label>
+                    <input type="text" id="user-address" placeholder="0x...">
+                    <label for="user-name"> Name </label>
+                    <input type="text" id="user-name" placeholder="User Name">
+                    <label for="user-role"> Role </label>
+                    <select id="user-role">
+                        <option value="1">Admin</option>
+                        <option value="2">Issuer</option>
+                        <option value="3">Holder</option>
+                        <option value="4">Verifier</option>
+                        <option value="5">Revocation Officer</option>
+                        <option value="6">Auditor</option>
+                    </select>
+                        <button type="submit"> Register User </button>
+                </form>
+                <h3>Change User Status</h3>
+                <form id="user-status-form">
+                    <label for="status-address"> User Address </label>
+                    <input type="text" id="status-address" placeholder="0x..." >
+                    <label for="user-active"> Active </label>
+                    <select id="user-active">
+                        <option value="true">Active</option>
+                        <option value="false">Inactive</option>
+                    </select>
+                    <button type="submit"> Update User Status </button>
+                </form>
+            </section>
+
+            <!-- Issuer Section -->
+            <section id="issuer-section">
+                <h2>Issue Certificate</h2>
+                <form id="issue-certificate-form">
+                    <label for="certificate-id"> Certificate ID </label>
+                    <input type="text" id="certificate-id" placeholder="Certificate ID">
+                    <label for="certificate-type"> Certificate Type </label>
+                    <input type="text" id="certificate-type" placeholder="Training Certificate">
+                    <label for="holder-address"> Holder Address </label>
+                    <input type="text" id="holder-address" placeholder="0x..." >
+                    <label for="expiry-date"> Expiry Date </label>
+                    <input type="datetime-local" id="expiry-date" >
+                    <label for="file-hash"> File Hash </label>
+                    <input type="text" id="file-hash" placeholder="0x...">
+                    <button type="submit"> Issue Certificate </button>
+                </form>
+            </section>
+
+            <!-- Holder Section -->
+            <section id="holder-section">
+                <h2>My Certificates</h2>
+                <button id="load-my-certificates"> Load My Certificates </button>
+                <div id="my-certificates">
+                    <p>No certificates loaded.</p>
+                </div>
+            </section>
+
+            <!-- Verification Section -->
+            <section id="verification-section">
+                <h2>Verify Certificate</h2>
+                <h3>Verify by ID</h3>
+                <form id="verify-id-form">
+                    <label for="verify-certificate-id"> Certificate ID </label>
+                    <input type="text" id="verify-certificate-id" placeholder="Certificate ID" >
+                    <button type="submit"> Verify by ID </button>
+                </form>
+                <h3>Verify by Hash</h3>
+                <form id="verify-hash-form">
+                    <label for="verify-file-hash"> File Hash </label>
+                    <input type="text" id="verify-file-hash" placeholder="0x..." >
+                    <button type="submit"> Verify by Hash </button>
+                </form>
+                <div id="verification-result">
+                    <p>No verification performed.</p>
+                </div>
+            </section>
+
+            <!-- Revocation Section -->
+            <section id="revocation-section">
+                <h2>Revoke Certificate</h2>
+                <form id="revoke-certificate-form">
+                    <label for="revoke-certificate-id"> Certificate ID </label>
+                    <input type="text" id="revoke-certificate-id" placeholder="Certificate ID">
+                    <label for="revocation-reason"> Reason </label>
+                    <input type="text" id="revocation-reason" placeholder="Reason for revocation">
+                    <button type="submit"> Revoke Certificate </button>
+                </form>
+            </section>
+
+            <!-- Certificate Search Section -->
+            <section id="certificate-section">
+                <h2>Certificate Details</h2>
+                <form id="certificate-form">
+                    <label for="search-certificate-id"> Certificate ID </label>
+                    <input type="text" id="search-certificate-id" placeholder="Certificate ID">
+                    <button type="submit"> View Certificate </button>
+                </form>
+                <div id="certificate-result">
+                    <p>No certificate selected.</p>
+                </div>
+            </section>
+
+            <!-- Auditor Section -->
+             <section id="auditor-section">
+                <h2>Auditor</h2>
+                <button id="load-all-certificates"> Load All Certificate IDs </button>
+                <div id="all-certificates">
+                    <p>No certificates loaded.</p>
+                </div>
+            </section>
+
+            <!-- Status Section -->
+             <section id="status-section">
+                <h2>Application Status</h2>
+                <p id="status"> No blockchain transaction yet. </p>
             </section>
         </main>
         <footer>
-            <p>Blockchain Application</p>
+            <p>Training Certificate DApp</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.5/dist/ethers.umd.min.js"></script>
         <script src="frontend.js"></script>
     </body>
 </html>
