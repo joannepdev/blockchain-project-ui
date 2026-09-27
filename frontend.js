@@ -1,3 +1,5 @@
+// load the ABI file
+
 async function loadABI() {
     try {
         const response = await fetch("TrainingCertificate_sol_TrainingCertificate.abi");
@@ -19,12 +21,14 @@ async function loadABI() {
 loadABI();
 
 
-// Contract
+// contract address
 const contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138";
 
 let contract;
 let provider;
 let signer;
+
+// load contract
 
 async function loadContract() {
     try {
@@ -54,6 +58,13 @@ async function loadContract() {
             throw new Error("Wrong network. Please connect to Sepolia.");
         }
 
+        console.log("Contract address:", contractAddress);
+
+        const code = await provider.getCode(contractAddress);
+
+        console.log("Contract code:");
+        console.log(code);
+
         contract = new ethers.Contract(
             contractAddress,
             abi,
@@ -68,10 +79,13 @@ async function loadContract() {
     }
 }
 
+// get HTML elements by their ID and display them in the page
 
 const button = document.getElementById("connect-wallet");
 const walletAddress = document.getElementById("wallet-address");
 const walletRole = document.getElementById("wallet-role");
+
+// add click event listener
 
 button.addEventListener("click", async function () {
     try {
@@ -90,6 +104,7 @@ button.addEventListener("click", async function () {
         // Get signer
         signer = await provider.getSigner();
 
+        // get network
         const network = await provider.getNetwork();
 
         console.log("Network:");
@@ -116,6 +131,7 @@ button.addEventListener("click", async function () {
 
 console.log("Register User section loaded.");
 
+// load registration form
 const registerUserForm = document.getElementById("register-user-form");
 
 registerUserForm.addEventListener("submit", async function (event) {
@@ -144,6 +160,7 @@ registerUserForm.addEventListener("submit", async function (event) {
     }
 });
 
+// load user status form
 const userStatusForm = document.getElementById("user-status-form");
 
 userStatusForm.addEventListener("submit", async function (event) {
@@ -170,6 +187,7 @@ userStatusForm.addEventListener("submit", async function (event) {
     }
 });
 
+// load certificate issuance form
 const issueCertificateForm = document.getElementById("issue-certificate-form");
 
 issueCertificateForm.addEventListener("submit", async function (event) {
@@ -211,6 +229,7 @@ issueCertificateForm.addEventListener("submit", async function (event) {
     }
 });
 
+// load certificates button
 const loadMyCertificatesButton =
     document.getElementById("load-my-certificates");
 
@@ -220,6 +239,9 @@ loadMyCertificatesButton.addEventListener("click", function () {
     document.getElementById("my-certificates").innerHTML =
         "<p>Certificate list loaded successfully. Blockchain call not sent.</p>";
 });
+
+// load verification form
+// verification by ID
 
 const verifyIdForm = document.getElementById("verify-id-form");
 
@@ -246,6 +268,8 @@ verifyIdForm.addEventListener("submit", function (event) {
     }
 });
 
+// verification by hash form
+
 const verifyHashForm = document.getElementById("verify-hash-form");
 
 verifyHashForm.addEventListener("submit", function (event) {
@@ -270,6 +294,8 @@ verifyHashForm.addEventListener("submit", function (event) {
             "<p>Verification failed.</p>";
     }
 });
+
+// certificate revocation form
 
 const revokeCertificateForm =
     document.getElementById("revoke-certificate-form");
@@ -301,6 +327,8 @@ revokeCertificateForm.addEventListener("submit", function (event) {
     }
 });
 
+// load certificate form
+
 const certificateForm = document.getElementById("certificate-form");
 
 certificateForm.addEventListener("submit", function (event) {
@@ -325,6 +353,8 @@ certificateForm.addEventListener("submit", function (event) {
             "<p>Could not load certificate details.</p>";
     }
 });
+
+// load all certificates button
 
 const loadAllCertificatesButton =
     document.getElementById("load-all-certificates");
